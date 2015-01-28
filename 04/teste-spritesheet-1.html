@@ -4,6 +4,15 @@
 <head>
    <title>Testando a classe Spritesheet</title>
    <script src="spritesheet.js"></script>
+   <script src="animacao.js"></script>
+   <script src="teclado.js"></script>
+   <script src="sonic.js"></script>
+   <style>
+      #canvas_spritesheet_1{
+         background-color: #CCC;
+         border: 2px solid #0000FF;
+      }
+   </style>
 </head>
 
 <body>
@@ -15,30 +24,19 @@
       var imgSonic = new Image(); 
       imgSonic.src = 'spritesheet.png'; 
 
-      // Quero passar: context, imagem, linhas, colunas 
-      var sheet = new Spritesheet(context, imgSonic, 3, 8); 
+      var animacao = new Animacao(context);
+      var teclado = new Teclado(document);
+      var sonic = new Sonic(context, teclado, imgSonic);
 
-      // Duração de cada quadro 
-      sheet.intervalo = 60;
+      sonic.x = 200;
+      sonic.y = 200;
+      sonic.velocidade = 5;
 
-      // "correndo para direita" 
-      sheet.linha = 1; 
-
-      // Animação
-      imgSonic.onload = gameLoop; 
-
-      function gameLoop() { 
-         context.clearRect(0, 0, context.canvas.width,
-               context.canvas.height); 
-
-         // Avançar na animação
-         sheet.proximoQuadro();
-
-         // Onde desenhar o quadro atual 
-         sheet.desenhar(100, 100);
-
-         requestAnimationFrame(gameLoop); 
+      animacao.novoSprite(sonic);
+      imgSonic.onload = function(){
+         animacao.ligar();
       }
+
    </script>
 </body>
 

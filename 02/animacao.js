@@ -3,8 +3,6 @@ function Animacao(context) {
    this.sprites = [];
    this.ligado = false;
 }
-
-//Protótipo Animação
 Animacao.prototype = {
    novoSprite: function(sprite) {
       this.sprites.push(sprite);

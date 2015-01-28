@@ -28,7 +28,6 @@ function Teclado(elemento) {
           teclado.funcoesDisparo[tecla] () ;
       }
    });
-   //Comentário teste
 
    elemento.addEventListener('keyup', function(evento) {
       teclado.pressionadas[evento.keyCode] = false;
