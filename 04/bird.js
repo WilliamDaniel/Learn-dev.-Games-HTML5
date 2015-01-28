@@ -33,6 +33,13 @@ function Bird(context, teclado, imagem){
 
 				this.x += this.velocidade;
 			}
+
+			else if(this.teclado.pressionada(SETA_ESQUERDA)){
+				if(! this.voando || this.direcao != BIRD_ESQUERDA){
+					this.sheet.linha = 0;
+					this.sheet.coluna = 0;
+				}
+			}
 		},
 		desenhar: function(){
 			this.sheet.desenhar(this.x, this.y);
