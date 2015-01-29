@@ -11,7 +11,7 @@ function Bird(context, teclado, imagem){
 
 	//Criando spritesheet
 	this.sheet = new Spritesheet(context, imagem, 4, 4);
-	this.sheet.intervalo = 60;
+	this.sheet.intervalo = 120;
 
 	//Estado inicial
 	this.direcao = BIRD_ESQUERDA;
@@ -39,6 +39,23 @@ function Bird(context, teclado, imagem){
 					this.sheet.linha = 0;
 					this.sheet.coluna = 0;
 				}
+				this.voando = true;
+				this.direcao = BIRD_ESQUERDA;
+
+				this.sheet.proximoQuadro();
+
+				this.x -= this.velocidade;
+			}
+			else{
+				if(this.direcao == BIRD_DIREITA){
+					this.sheet.coluna = 1;		
+					this.sheet.linha = 1;
+				}else if(this.direcao == BIRD_ESQUERDA){
+					this.sheet.coluna = 1;
+					this.sheet.linha = 0;
+				}
+				
+				this.voando = false;
 			}
 		},
 		desenhar: function(){
